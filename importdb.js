@@ -45,8 +45,7 @@ var  modelsPath = "./api/models/";
 var  controllersPath = "./api/controllers/";
 
 fs.exists(modelsPath, function(exists) {
-    if (!exists) {
-
+    if (exists) {
         var connection = mysql.createConnection({
             host : mysqlConfig[2],
             user : mysqlConfig[0],
@@ -310,5 +309,5 @@ function asyncForEach(array, fn, callback) {
 }
 
 function showUsage (){
-    console.log("\nUsage: node importdb.php USER:PASSWORD@HOST:PORT/DATABASENAME (For import all schemas)\n       php importdb.php USER:PASSWORD@HOST:PORT/DATABASENAME schema1 schema2 ... (For import selected schemas)\n\n");
+    console.log("\nUsage: node importdb.js USER:PASSWORD@HOST:PORT/DATABASENAME (For import all tables)\n       php importdb.js USER:PASSWORD@HOST:PORT/DATABASENAME tableName1, tableName2 ... (For import selected tables)\n\n");
 }
