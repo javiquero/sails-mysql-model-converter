@@ -43,14 +43,14 @@ var mysql = require('./node_modules/sails-mysql/node_modules/mysql/index.js');
 var fs = require('fs');
 var  modelsPath = "./api/models/";
 var  controllersPath = "./api/controllers/";
+var connection = mysql.createConnection({
+    host : mysqlConfig[2],
+    user : mysqlConfig[0],
+    password: mysqlConfig[1]
+});
 
 fs.exists(modelsPath, function(exists) {
     if (exists) {
-        var connection = mysql.createConnection({
-            host : mysqlConfig[2],
-            user : mysqlConfig[0],
-            password: mysqlConfig[1]
-        });
         connection.connect();
         connection.query("use " + mysqlConfig[4] );
         connection.query("SET NAMES 'utf8'");
